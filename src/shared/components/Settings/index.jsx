@@ -14,6 +14,7 @@ import './style.scss';
 import Profile from './Profile';
 import Account from './Account';
 import Preferences from './Preferences';
+import UserConsentModal from './UserConsentModal';
 
 export default function Settings(props) {
   const newProps = { ...props };
@@ -46,6 +47,14 @@ export default function Settings(props) {
 
   return (
     <div styleName="container" className="profile-settings">
+      {
+        newProps.userConsentModalOpen
+        && (
+        <UserConsentModal
+          {...newProps}
+        />
+        )
+      }
       <MetaTags
         title={`${title} | TopCoder`}
         description="Profile setting page for Topcoder member"

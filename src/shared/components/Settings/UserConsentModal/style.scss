@@ -1,0 +1,108 @@
+@import "~styles/mixins";
+
+@mixin msgBtn {
+  height: 30px;
+  min-height: 30px;
+  font-size: 12px;
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+  width: 100px;
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+
+  @include xs-to-sm {
+    width: 95px;
+  }
+}
+
+.container {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  max-height: 95vh;
+  max-width: $screen-md;
+  overflow: hidden;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0;
+
+  @include xs-to-lg {
+    max-width: 95vw;
+  }
+
+  @include xs-to-sm {
+    padding: 40px 10px;
+  }
+}
+
+.userConsent {
+  margin-top: 30px;
+  padding: 15px 15px 30px 15px;
+  background: #fbfbfb;
+  border: 1px solid #f0f0f0;
+  width: 100%;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 4px 9px 0 rgba(38, 38, 40, 0.06);
+  border-radius: 6px;
+}
+
+.userConsentMsg {
+  @include tc-body-md;
+
+  color: $tc-black;
+  text-align: center;
+
+  p{
+    padding: 25px 10px 0;
+  }
+
+  .msgTitle{
+    font-weight: 700;
+  }
+}
+
+.buttons {
+  align-self: center;
+  margin-top: 30px;
+
+  @include xs-to-sm {
+    margin-top: 30px;
+  }
+
+  .btnDefy {
+    @include roboto-medium;
+    @include msgBtn;
+  
+    background-color: #fff;
+    color: $tc-black;
+    border: 1px solid #d5d5d5;
+
+    &:hover {
+      background: $tc-dark-blue;
+      color: $tc-black;
+      border: 1px solid #d5d5d5;
+    }
+  }
+  
+  .btnOk {
+    @include roboto-medium;
+    @include msgBtn;
+  
+    color: $tc-white;
+    margin-left: 10px;
+  }
+}

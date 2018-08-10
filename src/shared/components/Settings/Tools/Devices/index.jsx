@@ -77,7 +77,7 @@ export default class Devices extends React.Component {
     } = this.props;
 
     if (newDeviceTrait.traits.data.length > 0) {
-      updateUserTrait(handle, 'device', newDeviceTrait.traits.data, tokenV3);
+      updateUserTrait(handle, 'device', newDeviceTrait.traits.data, tokenV3, false);
     } else {
       deleteUserTrait(handle, 'device', tokenV3);
     }
@@ -107,7 +107,7 @@ export default class Devices extends React.Component {
       const newDeviceTrait = { ...deviceTrait };
       newDeviceTrait.traits.data.push(newDevice);
       this.setState({ deviceTrait: newDeviceTrait });
-      updateUserTrait(handle, 'device', newDeviceTrait.traits.data, tokenV3);
+      updateUserTrait(handle, 'device', newDeviceTrait.traits.data, tokenV3, true);
     } else {
       const newDevices = [];
       newDevices.push(newDevice);
@@ -115,7 +115,7 @@ export default class Devices extends React.Component {
         data: newDevices,
       };
       this.setState({ deviceTrait: { traits } });
-      addUserTrait(handle, 'device', newDevices, tokenV3);
+      addUserTrait(handle, 'device', newDevices, tokenV3, true);
     }
     const empty = {
       deviceType: '',

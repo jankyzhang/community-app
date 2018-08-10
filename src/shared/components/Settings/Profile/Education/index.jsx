@@ -148,7 +148,7 @@ export default class Education extends React.Component {
     } = this.props;
 
     if (newEducationTrait.traits.data.length > 0) {
-      updateUserTrait(handle, 'education', newEducationTrait.traits.data, tokenV3);
+      updateUserTrait(handle, 'education', newEducationTrait.traits.data, tokenV3, false);
     } else {
       deleteUserTrait(handle, 'education', tokenV3);
     }
@@ -183,7 +183,7 @@ export default class Education extends React.Component {
       const newEducationTrait = { ...educationTrait };
       newEducationTrait.traits.data.push(newEducation);
       this.setState({ educationTrait: newEducationTrait });
-      updateUserTrait(handle, 'education', newEducationTrait.traits.data, tokenV3);
+      updateUserTrait(handle, 'education', newEducationTrait.traits.data, tokenV3, true);
     } else {
       const newEducations = [];
       newEducations.push(newEducation);
@@ -191,7 +191,7 @@ export default class Education extends React.Component {
         data: newEducations,
       };
       this.setState({ educationTrait: { traits } });
-      addUserTrait(handle, 'education', newEducations, tokenV3);
+      addUserTrait(handle, 'education', newEducations, tokenV3, true);
     }
     const empty = {
       type: '',
@@ -251,7 +251,6 @@ export default class Education extends React.Component {
     const educationItems = educationTrait.traits
       ? educationTrait.traits.data.slice() : [];
     const { newEducation, formInvalid, errorMessage } = this.state;
-
 
     return (
       <div styleName={containerStyle}>

@@ -98,7 +98,7 @@ export default class ServiceProviders extends React.Component {
     } = this.props;
 
     if (newServiceProviderTrait.traits.data.length > 0) {
-      updateUserTrait(handle, 'service_provider', newServiceProviderTrait.traits.data, tokenV3);
+      updateUserTrait(handle, 'service_provider', newServiceProviderTrait.traits.data, tokenV3, false);
     } else {
       deleteUserTrait(handle, 'service_provider', tokenV3);
     }
@@ -125,7 +125,7 @@ export default class ServiceProviders extends React.Component {
       const newServiceProviderTrait = { ...serviceProviderTrait };
       newServiceProviderTrait.traits.data.push(newServiceProvider);
       this.setState({ serviceProviderTrait: newServiceProviderTrait });
-      updateUserTrait(handle, 'service_provider', newServiceProviderTrait.traits.data, tokenV3);
+      updateUserTrait(handle, 'service_provider', newServiceProviderTrait.traits.data, tokenV3, true);
     } else {
       const newServiceProviders = [];
       newServiceProviders.push(newServiceProvider);
@@ -133,7 +133,7 @@ export default class ServiceProviders extends React.Component {
         data: newServiceProviders,
       };
       this.setState({ serviceProviderTrait: { traits } });
-      addUserTrait(handle, 'service_provider', newServiceProviders, tokenV3);
+      addUserTrait(handle, 'service_provider', newServiceProviders, tokenV3, true);
     }
     const empty = {
       serviceProviderType: '',

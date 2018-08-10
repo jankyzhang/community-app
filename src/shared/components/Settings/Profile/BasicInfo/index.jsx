@@ -111,11 +111,11 @@ export default class BasicInfo extends React.Component {
       const newBasicInfoTrait = { ...basicInfoTrait };
       newBasicInfoTrait.traits.data = [];
       newBasicInfoTrait.traits.data.push(newBasicInfo);
-      updateUserTrait(handle, 'basic_info', newBasicInfoTrait.traits.data, tokenV3);
+      updateUserTrait(handle, 'basic_info', newBasicInfoTrait.traits.data, tokenV3, true);
     } else {
       const data = [];
       data.push(newBasicInfo);
-      addUserTrait(handle, 'basic_info', data, tokenV3);
+      addUserTrait(handle, 'basic_info', data, tokenV3, true);
     }
   }
 

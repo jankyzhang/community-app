@@ -88,6 +88,7 @@ class SettingsContainer extends React.Component {
 
 SettingsContainer.defaultProps = {
   settingsTab: TABS.PROFILE,
+  userConsentModalOpen: false,
   handle: '',
   tokenV3: '',
   profile: null,
@@ -106,6 +107,7 @@ SettingsContainer.propTypes = {
   saveEmailPreferences: PT.func.isRequired,
   updatePassword: PT.func.isRequired,
   settingsTab: PT.string,
+  userConsentModalOpen: PT.bool,
   authenticating: PT.bool.isRequired,
   handle: PT.string,
   tokenV3: PT.string,
@@ -119,6 +121,7 @@ SettingsContainer.propTypes = {
 function mapStateToProps(state) {
   return {
     settingsTab: state.page.settings.settingsTab,
+    userConsentModalOpen: state.page.settings.userConsentModalOpen,
     settingsPageState: state.page.settings,
     authenticating: state.auth.authenticating,
     handle: _.get(state.auth, 'user.handle'),
@@ -177,6 +180,7 @@ function mapDispatchToProps(dispatch) {
     loadTabData,
     selectTab: tab => dispatch(settingsActions.page.settings.selectTab(tab)),
     clearIncorrectPassword: () => dispatch(settingsActions.page.settings.clearIncorrectPassword()),
+    updateModalOpen: () => dispatch(settingsActions.page.settings.updateModalOpen()),
     addWebLink: (handle, tokenV3, webLink) => {
       dispatch(profileActions.addWebLinkInit());
       dispatch(profileActions.addWebLinkDone(handle, tokenV3, webLink));
@@ -226,10 +230,16 @@ function mapDispatchToProps(dispatch) {
     loadAllUserTraits: (handle, tokenV3) => {
       dispatch(actions.settings.getAllUserTraits(handle, tokenV3));
     },
-    addUserTrait: (handle, traitId, data, tokenV3) => {
+    addUserTrait: (handle, traitId, data, tokenV3, ModalOpen) => {
+      if (ModalOpen) {
+        dispatch(settingsActions.page.settings.updateModalOpen());
+      }
       dispatch(actions.settings.addUserTrait(handle, traitId, data, tokenV3));
     },
-    updateUserTrait: (handle, traitId, data, tokenV3) => {
+    updateUserTrait: (handle, traitId, data, tokenV3, ModalOpen) => {
+      if (ModalOpen) {
+        dispatch(settingsActions.page.settings.updateModalOpen());
+      }
       dispatch(actions.settings.updateUserTrait(handle, traitId, data, tokenV3));
     },
     deleteUserTrait: (handle, traitId, tokenV3) => {

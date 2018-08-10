@@ -18,6 +18,8 @@ import CommunityIcon from 'assets/images/profile/sideicons/community.svg';
 import BasicInfo from './BasicInfo';
 import Language from './Language';
 import Education from './Education';
+import Organization from './Organization';
+import Hobby from './Hobby';
 import Work from './Work';
 import Skills from './Skills';
 import Community from './Community';
@@ -83,10 +85,14 @@ class Profile extends React.Component {
           return <Language {...this.props} />;
         case 'education':
           return <Education {...this.props} />;
+        case 'organization':
+          return <Organization {...this.props} />;
         case 'work':
           return <Work {...this.props} />;
         case 'skill':
           return <Skills {...this.props} />;
+        case 'hobby':
+          return <Hobby {...this.props} />;
         case 'community':
           return <Community {...this.props} />;
         default:

@@ -152,7 +152,7 @@ export default class Work extends React.Component {
     } = this.props;
 
     if (newWorkTrait.traits.data.length > 0) {
-      updateUserTrait(handle, 'work', newWorkTrait.traits.data, tokenV3);
+      updateUserTrait(handle, 'work', newWorkTrait.traits.data, tokenV3, false);
     } else {
       deleteUserTrait(handle, 'work', tokenV3);
     }
@@ -187,7 +187,7 @@ export default class Work extends React.Component {
       const newWorkTrait = { ...workTrait };
       newWorkTrait.traits.data.push(newWork);
       this.setState({ workTrait: newWorkTrait });
-      updateUserTrait(handle, 'work', newWorkTrait.traits.data, tokenV3);
+      updateUserTrait(handle, 'work', newWorkTrait.traits.data, tokenV3, true);
     } else {
       const newWorks = [];
       newWorks.push(newWork);
@@ -195,7 +195,7 @@ export default class Work extends React.Component {
         data: newWorks,
       };
       this.setState({ workTrait: { traits } });
-      addUserTrait(handle, 'work', newWorks, tokenV3);
+      addUserTrait(handle, 'work', newWorks, tokenV3, true);
     }
   }
 

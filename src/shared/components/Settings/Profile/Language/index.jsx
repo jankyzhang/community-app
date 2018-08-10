@@ -125,7 +125,7 @@ export default class Language extends React.Component {
     } = this.props;
 
     if (newLanguageTrait.traits.data.length > 0) {
-      updateUserTrait(handle, 'languages', newLanguageTrait.traits.data, tokenV3);
+      updateUserTrait(handle, 'languages', newLanguageTrait.traits.data, tokenV3, false);
     } else {
       deleteUserTrait(handle, 'languages', tokenV3);
     }
@@ -152,7 +152,7 @@ export default class Language extends React.Component {
       const newLanguageTrait = { ...languageTrait };
       newLanguageTrait.traits.data.push(newLanguage);
       this.setState({ languageTrait: newLanguageTrait });
-      updateUserTrait(handle, 'languages', newLanguageTrait.traits.data, tokenV3);
+      updateUserTrait(handle, 'languages', newLanguageTrait.traits.data, tokenV3, true);
     } else {
       const newLanguages = [];
       newLanguages.push(newLanguage);
@@ -160,7 +160,7 @@ export default class Language extends React.Component {
         data: newLanguages,
       };
       this.setState({ languageTrait: { traits } });
-      addUserTrait(handle, 'languages', newLanguages, tokenV3);
+      addUserTrait(handle, 'languages', newLanguages, tokenV3, true);
     }
     const empty = {
       language: '',

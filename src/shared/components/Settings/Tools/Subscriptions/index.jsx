@@ -90,7 +90,7 @@ export default class Subscription extends React.Component {
     } = this.props;
 
     if (newSubscriptionTrait.traits.data.length > 0) {
-      updateUserTrait(handle, 'subscription', newSubscriptionTrait.traits.data, tokenV3);
+      updateUserTrait(handle, 'subscription', newSubscriptionTrait.traits.data, tokenV3, false);
     } else {
       deleteUserTrait(handle, 'subscription', tokenV3);
     }
@@ -117,7 +117,7 @@ export default class Subscription extends React.Component {
       const newSubscriptionTrait = { ...subscriptionTrait };
       newSubscriptionTrait.traits.data.push(newSubscription);
       this.setState({ subscriptionTrait: newSubscriptionTrait });
-      updateUserTrait(handle, 'subscription', newSubscriptionTrait.traits.data, tokenV3);
+      updateUserTrait(handle, 'subscription', newSubscriptionTrait.traits.data, tokenV3, true);
     } else {
       const newSubscriptions = [];
       newSubscriptions.push(newSubscription);
@@ -125,7 +125,7 @@ export default class Subscription extends React.Component {
         data: newSubscriptions,
       };
       this.setState({ subscriptionTrait: { traits } });
-      addUserTrait(handle, 'subscription', newSubscriptions, tokenV3);
+      addUserTrait(handle, 'subscription', newSubscriptions, tokenV3, true);
     }
     const empty = {
       name: '',

@@ -43,11 +43,11 @@ export default function Personalization({
     // personalization data might not have been created yet; if so, add new trait
     if (traitData && typeof traitData.userConsent === 'boolean') {
       const personalizationData = { userConsent: !traitData.userConsent };
-      updateUserTrait(handle, 'personalization', [personalizationData], tokenV3);
+      updateUserTrait(handle, 'personalization', [personalizationData], tokenV3, false);
     } else if (!traitData) {
       // update the default (userConsent: false) when creating the new trait
       const personalizationData = { userConsent: true };
-      addUserTrait(handle, 'personalization', [personalizationData], tokenV3);
+      addUserTrait(handle, 'personalization', [personalizationData], tokenV3, false);
     }
   };
 

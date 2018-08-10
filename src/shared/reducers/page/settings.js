@@ -201,6 +201,7 @@ function create(defaultState = {}) {
       deletingLinks: state.deletingLinks,
     }),
     [a.clearIncorrectPassword]: state => ({ ...state, incorrectPassword: false }),
+    [a.updateModalOpen]: state => ({ ...state, userConsentModalOpen: !state.userConsentModalOpen }),
     [actions.profile.getSkillsDone]: mergeSkills,
     [actions.profile.addSkillDone]: mergeSkills,
     [actions.profile.hideSkillDone]: mergeSkills,
@@ -220,6 +221,7 @@ function create(defaultState = {}) {
     [actions.settings.deleteUserTrait]: onUpdateUserTrait,
   }, _.defaults(defaultState, {
     settingsTab: TABS.PROFILE,
+    userConsentModalOpen: false,
     deletingLinks: [],
   }));
 }

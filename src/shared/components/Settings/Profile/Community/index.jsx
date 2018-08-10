@@ -59,11 +59,11 @@ class Community extends React.Component {
     if (isAdd) {
       const newCommunities = [];
       newCommunities.push(communityTrait);
-      addUserTrait(handle, 'communities', newCommunities, tokenV3);
+      addUserTrait(handle, 'communities', newCommunities, tokenV3, true);
     } else {
       const newCommunities = [];
       newCommunities.push(communityTrait);
-      updateUserTrait(handle, 'communities', newCommunities, tokenV3);
+      updateUserTrait(handle, 'communities', newCommunities, tokenV3, true);
     }
   }, SAVE_DELAY);
 

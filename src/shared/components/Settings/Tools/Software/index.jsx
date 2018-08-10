@@ -98,7 +98,7 @@ export default class Software extends React.Component {
     } = this.props;
 
     if (newSoftwareTrait.traits.data.length > 0) {
-      updateUserTrait(handle, 'software', newSoftwareTrait.traits.data, tokenV3);
+      updateUserTrait(handle, 'software', newSoftwareTrait.traits.data, tokenV3, false);
     } else {
       deleteUserTrait(handle, 'software', tokenV3);
     }
@@ -125,7 +125,7 @@ export default class Software extends React.Component {
       const newSoftwareTrait = { ...softwareTrait };
       newSoftwareTrait.traits.data.push(newSoftware);
       this.setState({ softwareTrait: newSoftwareTrait });
-      updateUserTrait(handle, 'software', newSoftwareTrait.traits.data, tokenV3);
+      updateUserTrait(handle, 'software', newSoftwareTrait.traits.data, tokenV3, true);
     } else {
       const newSoftwares = [];
       newSoftwares.push(newSoftware);
@@ -133,7 +133,7 @@ export default class Software extends React.Component {
         data: newSoftwares,
       };
       this.setState({ softwareTrait: { traits } });
-      addUserTrait(handle, 'software', newSoftwares, tokenV3);
+      addUserTrait(handle, 'software', newSoftwares, tokenV3, true);
     }
     const empty = {
       softwareType: '',

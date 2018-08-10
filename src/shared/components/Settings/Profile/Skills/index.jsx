@@ -188,7 +188,7 @@ export default class Skills extends React.Component {
       newSkillTrait.traits.data = [];
       newSkillTrait.traits.data.push(newSkill);
       this.setState({ skillTrait: newSkillTrait });
-      updateUserTrait(handle, 'skill', newSkillTrait.traits.data, tokenV3);
+      updateUserTrait(handle, 'skill', newSkillTrait.traits.data, tokenV3, true);
     } else {
       const newSkills = [];
       newSkills.push(newSkill);
@@ -196,7 +196,7 @@ export default class Skills extends React.Component {
         data: newSkills,
       };
       this.setState({ skillTrait: { traits } });
-      addUserTrait(handle, 'skill', newSkills, tokenV3);
+      addUserTrait(handle, 'skill', newSkills, tokenV3, true);
     }
   }
 
@@ -320,7 +320,7 @@ export default class Skills extends React.Component {
     } else {
       skillTrait.traits.data = [];
       skillTrait.traits.data.push(newSkill);
-      updateUserTrait(handle, 'skill', skillTrait.traits.data, tokenV3);
+      updateUserTrait(handle, 'skill', skillTrait.traits.data, tokenV3, false);
     }
   };
 
