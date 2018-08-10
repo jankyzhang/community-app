@@ -189,6 +189,7 @@ function testReducer(istate) {
 const defaultState = {
   settingsTab: 'profile',
   deletingLinks: [],
+  userConsentModalOpen: false,
 };
 
 describe('Default reducer', () => {
@@ -207,5 +208,6 @@ describe('Factory with server side rendering', () => {
   testReducer({
     settingsTab: 'account',
     deletingLinks: [],
+    userConsentModalOpen: false,
   });
 });

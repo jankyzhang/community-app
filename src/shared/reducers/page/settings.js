@@ -199,6 +199,7 @@ function create(defaultState = {}) {
     [a.selectTab]: (state, { payload }) => ({
       settingsTab: payload,
       deletingLinks: state.deletingLinks,
+      userConsentModalOpen: state.userConsentModalOpen,
     }),
     [a.clearIncorrectPassword]: state => ({ ...state, incorrectPassword: false }),
     [a.updateModalOpen]: state => ({ ...state, userConsentModalOpen: !state.userConsentModalOpen }),

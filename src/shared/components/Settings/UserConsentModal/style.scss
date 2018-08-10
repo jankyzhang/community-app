@@ -66,11 +66,11 @@
   color: $tc-black;
   text-align: center;
 
-  p{
+  p {
     padding: 25px 10px 0;
   }
 
-  .msgTitle{
+  .msgTitle {
     font-weight: 700;
   }
 }
@@ -86,7 +86,7 @@
   .btnDefy {
     @include roboto-medium;
     @include msgBtn;
-  
+
     background-color: #fff;
     color: $tc-black;
     border: 1px solid #d5d5d5;
@@ -97,11 +97,11 @@
       border: 1px solid #d5d5d5;
     }
   }
-  
+
   .btnOk {
     @include roboto-medium;
     @include msgBtn;
-  
+
     color: $tc-white;
     margin-left: 10px;
   }
